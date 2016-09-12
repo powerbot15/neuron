@@ -1,4 +1,4 @@
-export class Neuron{
+class Neuron{
 
     constructor (transferFuncType) {
 
@@ -28,26 +28,68 @@ export class Neuron{
 
     }
 
+    processInput (input, weight, bias) {
+
+        this.neuronResponse = this.transferFunction(summer(input, weight, bias));
+
+        return this.neuronResponse;
+
+    }
+
 }
 
 
 let neuronMixin = {
 
-    hardLimitTransfer : function () {
+    hardLimitTransfer : function (n) {
+
+        return n < 0 ? 0 : 1;
 
     },
 
     symmetricalHardLimitTransfer : function () {
 
-    },
-
-    linearTransfer : function () {
+        return n < 0 ? -1 : 1;
 
     },
 
-    logSigmoidTransfer : function () {
+    linearTransfer : (n) => {
+
+        return n;
+
+    },
+
+    saturatingLinear : function (n) {
+
+        if(n >= 0 && n < 1){
+
+            return n;
+
+        }
+
+        if(n > 1) {
+
+            return 1;
+
+        }
+
+        return 0;
+
+    },
+
+    symmetricSaturatingLinear : function (n) {
+
+    },
+
+    logSigmoidTransfer : function (n) {
 
     }
 
 };
+
+function summer (input, weight, bias) {
+
+    return input * weight + (bias || 0);
+
+}
 
