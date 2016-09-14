@@ -1,4 +1,4 @@
-class Neuron{
+export class Neuron{
 
     constructor (transferFuncType, weights, bias) {
 
