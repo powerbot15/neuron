@@ -1,75 +1,109 @@
 class Neuron{
 
-    constructor (transferFuncType) {
+    constructor (transferFuncType, weights, bias) {
+
+        this.weights = weights;
+
+        this.bias = bias;
 
         if(transferFuncType == 'hardLimit'){
 
-            this.transferFunction = neuronMixin.hardLimit;
+            this.transferFunction = transferFunctionsMixin.hardLimit;
 
         }
 
         if(transferFuncType == 'symmetricalHardLimit'){
 
-            this.transferFunction = neuronMixin.symmetricalHardLimit;
+            this.transferFunction = transferFunctionsMixin.symmetricalHardLimit;
 
         }
 
         if(transferFuncType == 'linear'){
 
-            this.transferFunction = neuronMixin.linear;
+            this.transferFunction = transferFunctionsMixin.linear;
 
         }
 
         if(transferFuncType == 'saturatingLinear'){
 
-            this.transferFunction = neuronMixin.saturatingLinear;
+            this.transferFunction = transferFunctionsMixin.saturatingLinear;
 
         }
 
         if(transferFuncType == 'symmetricSaturatingLinear'){
 
-            this.transferFunction = neuronMixin.symmetricSaturatingLinear;
+            this.transferFunction = transferFunctionsMixin.symmetricSaturatingLinear;
 
         }
 
         if(transferFuncType == 'logSigmoid'){
 
-            this.transferFunction = neuronMixin.logSigmoid;
+            this.transferFunction = transferFunctionsMixin.logSigmoid;
 
         }
 
         if(transferFuncType == 'hyperbolicTangentSigmoid'){
 
-            this.transferFunction = neuronMixin.hyperbolicTangentSigmoid;
+            this.transferFunction = transferFunctionsMixin.hyperbolicTangentSigmoid;
 
         }
 
         if(transferFuncType == 'positiveLinear'){
 
-            this.transferFunction = neuronMixin.positiveLinear;
+            this.transferFunction = transferFunctionsMixin.positiveLinear;
 
         }
 
         if(transferFuncType == 'competitive'){
 
-            this.transferFunction = neuronMixin.competitive;
+            this.transferFunction = transferFunctionsMixin.competitive;
 
         }
 
     }
 
-    processInput (input, weight, bias) {
+    getNeuronOutput (input) {
 
-        this.neuronResponse = this.transferFunction(summer(input, weight, bias));
+        this.neuronResponse = this.transferFunction(this.summer(input));
 
         return this.neuronResponse;
+
+    }
+
+    summer (inputVector) {
+
+        if(inputVector.length){
+
+            return this.matrixMultiplier(inputVector)
+
+        }
+
+        return inputVector * this.weights + (this.bias || 0);
+
+    }
+
+    matrixMultiplier (inputVector) {
+
+        let networkInput = 0;
+
+        let stepResult = 0;
+
+        for(let i = 0; i < inputVector.length; i++){
+
+            stepResult = inputVector[i] * this.weights[i] + (this.bias || 0);
+
+            networkInput += stepResult;
+
+        }
+
+        return networkInput;
 
     }
 
 }
 
 
-let neuronMixin = {
+let transferFunctionsMixin = {
 
     hardLimit : function (n) {
 
@@ -155,32 +189,4 @@ let neuronMixin = {
 
 };
 
-function summer (input, weight, bias) {
-
-    if(input.length){
-
-        return neuronMatrixMultiplier(input, weight, bias)
-
-    }
-    return input * weight + (bias || 0);
-
-}
-
-function neuronMatrixMultiplier(inputVector, weightVector, bias) {
-
-    let networkInput = 0;
-
-    let stepResult = 0;
-
-    for(let i = 0; i < inputVector.length; i++){
-
-        stepResult = inputVector[i] * weightVector[i] + (bias || 0);
-
-        networkInput += stepResult;
-
-    }
-
-    return networkInput;
-
-}
 
