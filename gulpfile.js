@@ -34,7 +34,7 @@ var watchify = require('watchify');
 var babel = require('babelify');
 
 function compile(watch) {
-    var bundler = watchify(browserify('./src/demo-perceptron.es6', { debug: true }).transform(babel, {presets: ["es2015"]}));
+    var bundler = watchify(browserify('./src/perceptron/demo-perceptron.es6', { debug: true }).transform(babel, {presets: ["es2015"]}));
 
     function rebundle() {
         bundler.bundle()

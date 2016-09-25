@@ -1,5 +1,4 @@
-
-import {Neuron} from './neuron.es6'
+import {Neuron} from '../neuron/neuron.es6'
 
 class Perceptron{
 
