@@ -1,6 +1,6 @@
 import {Neuron} from '../neuron/neuron.es6'
 
-class Perceptron{
+export class Perceptron{
 
     constructor () {
 
@@ -33,17 +33,3 @@ class Perceptron{
     }
 
 }
-
-let perceptron = new Perceptron();
-
-perceptron.runNet([1, -1, -1]);
-
-console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
-
-perceptron.runNet([1, 1, -1]);
-
-console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
-
-perceptron.runNet([-1, -1, -1]);
-
-console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
