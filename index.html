@@ -5,6 +5,45 @@
     <title>Perceptron</title>
 </head>
 <body>
+<main>
+    <h1>Neural Networks simple example for the binary pattern recognition problem</h1>
+    <p>Problem statement: Warehouse of fruits has a conveyer belt where fruits are loading to the
+        store. Neural network need to decide which kind of fruit it receive. Sensors we have are some primitive.
+        They can only return (+)1 or -1 values.</p>
+    <section data-perceptron>
+        <h2>Single layer perceptron</h2>
+        <p>Prototype weights are defined at the very beginning of the network building</p>
+        <div data-perceptron-inputs>
+            <h3>Network inputs</h3>
+            <section data-fruit-shape>
+                <label for="shape">Shape sensor : </label>
+                <select name="shape" id="shape">
+                    <option value="1">Round</option>
+                    <option value="-1">More Elliptic</option>
+                </select>
+            </section>
+            <section data-fruit-texture>
+                <label for="texture">Texture sensor : </label>
+                <select name="texture" id="texture">
+                    <option value="1">Smooth</option>
+                    <option value="-1">Rough</option>
+                </select>
+            </section>
+            <section data-fruit-weight>
+                <label for="weight">Weight sensor : </label>
+                <select name="weight" id="weight">
+                    <option value="1">More than 450g</option>
+                    <option value="-1">Less than 450g</option>
+                </select>
+            </section>
+
+            <a href="#" data-run-network>Get Network Result</a>
+        </div>
+        <div data-perceptron-output>
+            <strong data-network-output></strong>
+        </div>
+    </section>
+</main>
 <script src="build/build.js"></script>
 </body>
 </html>
