@@ -32,9 +32,9 @@ export class PerceptronInputsController{
 
             shapeInput : this.el.querySelector('#shape'),
 
-            textureInput : this.el.querySelector('#shape'),
+            textureInput : this.el.querySelector('#texture'),
 
-            weightInput : this.el.querySelector('#shape')
+            weightInput : this.el.querySelector('#weight')
 
         }
 
@@ -44,19 +44,19 @@ export class PerceptronInputsController{
 
         this.tpl.shapeInput.addEventListener('change', (e) => {
 
-            this.model.shape = e.target.value;
+            this.model.shape = parseInt(e.target.value);
 
         });
 
         this.tpl.textureInput.addEventListener('change', (e) => {
 
-            this.model.texture = e.target.value;
+            this.model.texture = parseInt(e.target.value);
 
         });
 
         this.tpl.weightInput.addEventListener('change', (e) => {
 
-            this.model.weight = e.target.value;
+            this.model.weight = parseInt(e.target.value);
 
         });
 
