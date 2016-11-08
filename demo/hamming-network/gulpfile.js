@@ -35,7 +35,7 @@ var babel = require('babelify');
 
 function compile(watch) {
     var bundler = watchify(browserify([
-        './src/app.es6'
+        './network-app/app.es6'
     ], { debug: true }).transform(babel, {presets: ["es2015"]}));
 
     if (watch) {
@@ -56,7 +56,7 @@ function rebundle(bundler) {
         .pipe(buffer())
         //.pipe(sourcemaps.init({ loadMaps: true }))
         //.pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('./build'));
 }
 
 function watch() {

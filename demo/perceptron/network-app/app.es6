@@ -1,8 +1,8 @@
-import {PerceptronInputsController} from './perceptron/perceptron-layout-helper.es6'
+import {PerceptronInputsController} from './network-code/perceptron-layout-helper.es6'
 
-import {Perceptron} from './perceptron/demo-perceptron.es6'
+import {Perceptron} from './network-code/demo-perceptron.es6'
 
-import {HammingNetwork} from './hamming-network/demo-hamming-network.es6'
+//import {HammingNetwork} from './hamming-network/demo-hamming-network.es6'
 
 checkDocumentCompleted(applicationRun);
 
@@ -43,6 +43,6 @@ function applicationRun() {
         perceptronResultOutput.innerText = perceptron.getResult() == -1 ? 'Orange' : 'Apple';
     });
 
-    let hammingNet = new HammingNetwork();
+    //let hammingNet = new HammingNetwork();
 
 }
