@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Hamming Network</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/hamming.css">
 </head>
 <body>
+<div></div>
     <header>
         <h1>Hamming Network</h1>
         <h2>Simple example for the binary pattern recognition problem</h2>
@@ -12,7 +15,46 @@
     <p>Problem statement: Warehouse of fruits has a conveyer belt where fruits are loading to the
         store. Neural network need to decide which kind of fruit it receive. Sensors we have are some primitive.
         They can only return (+)1 or -1 values.</p>
-    <section data-perceptron>
+    <section class="half-panel" data-learning-area>
+        <h3>Pseudo learning area</h3>
+        <div>
+            <h4>Create new prototype:</h4>
+            <ul class="proto-values">
+                <li>
+                    <label for="proto-name-input">Result Name: </label><input id="proto-name-input" type="text">
+                </li>
+                <li>
+                    <label for="shape">Shape sensor : </label>
+                    <select name="shape" id="shape">
+                        <option value="1">Round</option>
+                        <option value="-1">More Elliptic</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="texture">Texture sensor : </label>
+                    <select name="texture" id="texture">
+                        <option value="1">Smooth</option>
+                        <option value="-1">Rough</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="weight">Weight sensor : </label>
+                    <select name="weight" id="weight">
+                        <option value="1">More than 450g</option>
+                        <option value="-1">Less than 450g</option>
+                    </select>
+                </li>
+
+            </ul>
+
+            <button type="button" data-add-prototype>Add</button>
+        </div>
+        <ul class="prototypes" data-prototypes>
+            <li data-prototype></li>
+        </ul>
+    </section>
+    <section class="half-panel" data-network-area>
+
     </section>
 <script src="build/build.js"></script>
 </body>
