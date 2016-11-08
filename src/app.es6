@@ -27,22 +27,21 @@ function checkDocumentCompleted (callback) {
 
 function applicationRun() {
 
+
     let perceptron = new Perceptron();
     
     let perceptronInputsController = new PerceptronInputsController();
-    
-    perceptron.runNet([1, -1, -1]);
 
-    console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
+    let checkResultsButton = document.querySelector('[data-run-network]');
 
-    perceptron.runNet([1, 1, -1]);
+    let perceptronResultOutput = document.querySelector('[data-network-output]');
 
-    console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
+    checkResultsButton.addEventListener('click', e => {
 
-    perceptron.runNet([-1, -1, -1]);
+        perceptron.runNet(perceptronInputsController.getInputs());
 
-    console.log(perceptron.getResult() == -1 ? 'Orange' : 'Apple');
-
+        perceptronResultOutput.innerText = perceptron.getResult() == -1 ? 'Orange' : 'Apple';
+    });
 
     let hammingNet = new HammingNetwork();
 
